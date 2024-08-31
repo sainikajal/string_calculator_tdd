@@ -7,7 +7,12 @@ RSpec.describe StringCalculator do
   end
 
   it 'returns the number itself for a single number' do
-   expect(StringCalculator.add("1")).to eq(1)
- end
+    expect(StringCalculator.add("1")).to eq(1)
+  end
+
+  it 'returns the sum of two numbers separated by a comma' do
+  	expect(StringCalculator.add("1,5")).to eq(6)
+	end
+
 
 end
