@@ -4,9 +4,9 @@ class StringCalculator
 
     delimiters = [",", "\n"]
     if numbers.start_with?("//")
-      custom_delimiter = numbers[2]
-      numbers = numbers[4..]
-      delimiters << custom_delimiter
+      delimiter_part, numbers = numbers[2..].split("\n", 2)
+      custom_delimiters = delimiter_part.scan(/\[([^\]]+)\]/).flatten
+      delimiters.concat(custom_delimiters)
     end
 
     numbers_array = numbers.split(Regexp.union(delimiters)).map(&:to_i)
